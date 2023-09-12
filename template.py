@@ -1,3 +1,4 @@
+# template.py is for setting up the folder structure
 import os
 from pathlib import Path
 import logging
@@ -19,7 +20,7 @@ list_of_files = [
     f"src_{project_name}/pipeline/__init__.py",
     f"src_{project_name}/entity/__init__.py",
     f"src_{project_name}/constants/__init__.py",
-    "config/config.yaml"
+    "config/config.yaml",
     "dvc.yaml",
     "params.yaml",
     "requirements.txt",

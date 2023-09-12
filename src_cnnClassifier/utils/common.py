@@ -1,4 +1,15 @@
-# The most frequent functions or code, we write in Utils 
+# The most frequent functions or code, we write in Utils
+# 1. read_yaml
+# 2. create_directories 
+# 3. save_json
+# 4. load_json
+# 5. save_bin
+# 6. load_bin
+# 7. get_size
+# 8. decodeImage 
+# 9. encodeImageIntoBase64
+# ConfigBox is to give output as Key-Value as d.key instead of d['key'], to make it easy to use when working with yaml files. 
+# ensure annotation decorator will fix the errors/exceptions for correct data types.
 
 import os
 from box.exceptions import BoxValueError
@@ -12,7 +23,7 @@ from pathlib import Path
 from typing import Any 
 import base64
 
-@ensure_annotations
+@ensure_annotations  
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """
     reads yaml file and returns 

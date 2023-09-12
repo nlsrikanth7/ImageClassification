@@ -1,7 +1,5 @@
 # ImageClassification
 
-
-
 ## Workflows
 
 1. Update config.yaml
