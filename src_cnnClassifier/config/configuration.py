@@ -1,42 +1,13 @@
-# # * means everything 
-# from src_cnnClassifier.constants import * 
-# from src_cnnClassifier.utils.common import read_yaml, create_directories
-# from src_cnnClassifier.entity.config_entity import DataIngestionConfig
-
-
-# class ConfigurationManager:
-#     def __init__(self, config_filepath = CONFIG_FILE_PATH, params_filepath = PARAMS_FILE_PATH):
-
-#             self.config = read_yaml(config_filepath)
-#             self.params = read_yaml(params_filepath)
-
-#             create_directories([self.config.artifacts_root])
-
-    
-#     def get_data_ingestion_config(self) -> DataIngestionConfig:
-          
-#           config = self.config.data_ingestion # storing the data_ingestion config into into variable config
-
-#           create_directories([config.root_dir]) # create root directory for the variable config 
-
-#           # Returning the data type as defined in teh DataIngestionCofig in the entity or above step #5.
-#           # reading one by one from the config variable and storing them to assigned variables like root_dir, source_URL etc. 
-
-#           data_ingestion_config = DataIngestionConfig(
-#                 root_dir=config.root_dir,
-#                 source_URL=config.source_URL,
-#                 local_data_file=config.local_data_file,
-#                 unzip_dir=config.unzip_dir
-#           )
-
-#           return data_ingestion_config
-    
-
+  # * means everything 
 from src_cnnClassifier.constants import *
 import os
 from pathlib import Path
 from src_cnnClassifier.utils.common import read_yaml, create_directories
-from src_cnnClassifier.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig)
+from src_cnnClassifier.entity.config_entity import (DataIngestionConfig, 
+                                                    PrepareBaseModelConfig, 
+                                                    PrepareCallbacksConfig, 
+                                                    TrainingConfig,
+                                                    EvaluationConfig)
 
 
 class ConfigurationManager:
@@ -53,9 +24,13 @@ class ConfigurationManager:
 
     
     def get_data_ingestion_config(self) -> DataIngestionConfig:
-        config = self.config.data_ingestion
+        config = self.config.data_ingestion # storing the data_ingestion config into into variable config
 
-        create_directories([config.root_dir])
+        create_directories([config.root_dir]) # create root directory for the variable config 
+
+         # Returning the data type as defined in the DataIngestionCofig in the entity
+#        # reading one by one from the config variable and storing them to assigned variables like root_dir, source_URL etc. 
+
 
         data_ingestion_config = DataIngestionConfig(
             root_dir=config.root_dir,
@@ -122,6 +97,16 @@ class ConfigurationManager:
             params_image_size= params.IMAGE_SIZE
             
         )
-
         return training_config
+    
+
+    def get_validation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model= Path("artifacts/training/model.h5"),
+            training_data=Path("artifacts/data_ingestion/Cats_Dogs"),
+            all_params=self.params,
+            params_batch_size=self.params.BATCH_SIZE,
+            params_image_size=self.params.IMAGE_SIZE
+        )
+        return eval_config
     

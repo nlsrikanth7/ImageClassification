@@ -3,14 +3,6 @@ from pathlib import Path
 
 
 # Entity _ which return type should the function return.
-#Data Ingestion related config
-
-# @dataclass(frozen=True)
-# class DataIngestionConfig:
-#     root_dir:Path
-#     source_URL:str
-#     local_data_file:Path
-#     unzip_dir:Path
 
 @dataclass(frozen=True)
 class DataIngestionConfig:
@@ -50,5 +42,13 @@ class TrainingConfig:
     params_batch_size: int
     params_is_augmentation: bool
     params_image_size: list
+
+@dataclass(frozen=True)
+class EvaluationConfig:
+    path_of_model: Path
+    training_data: Path
+    all_params: dict
+    params_image_size: list
+    params_batch_size: int
 
 
