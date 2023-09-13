@@ -11,7 +11,6 @@ class PrepareCallback:
     def __init__(self, config: PrepareCallbacksConfig):
         self.config = config
 
-
     
     @property
     def _create_tb_callbacks(self):
