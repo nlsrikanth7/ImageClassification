@@ -27,7 +27,7 @@ class PredictionPipeline:
         print(result)
 
         if result[0] == 1:
-            prediction = 'Dog'
+            prediction = 'Coccidiosis'
             return [{ "image" : prediction}]
         elif result[0] == 2:
             prediction = 'Cat'
@@ -35,6 +35,6 @@ class PredictionPipeline:
         elif result[0] == 3:
             prediction =  'Healthy Chick'
             return [{"image" : prediction}]
-        else:
-            prediction = 'Coccidiosis'
-            result [{'image': prediction}]
+        elif result[0] == 4:
+            prediction = 'Dog'
+            result [{"image": prediction}]
