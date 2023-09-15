@@ -1,7 +1,10 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
+from tensorflow import keras
+from keras.models import load_model
+from keras.preprocessing import image
+# from tensorflow.keras.models import load_model
+# from tensorflow.keras.preprocessing import image
 import os
 
 
@@ -35,4 +38,3 @@ class PredictionPipeline:
         else:
             prediction = 'Coccidiosis'
             result [{'image': prediction}]
-            
