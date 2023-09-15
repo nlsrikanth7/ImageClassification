@@ -26,6 +26,13 @@ class PredictionPipeline:
         if result[0] == 1:
             prediction = 'Dog'
             return [{ "image" : prediction}]
-        else:
+        elif result[0] == 2:
             prediction = 'Cat'
             return [{ "image" : prediction}]
+        elif result[0] == 3:
+            prediction =  'Healthy Chick'
+            return [{"image" : prediction}]
+        else:
+            prediction = 'Coccidiosis'
+            result [{'image': prediction}]
+            
